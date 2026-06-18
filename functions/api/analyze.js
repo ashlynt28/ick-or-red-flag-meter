@@ -70,12 +70,8 @@ export async function onRequestPost(context) {
     });
   }
 
-  // AI Gateway URL format:
-  // https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/anthropic/v1/messages
-  const gatewayUrl = `https://gateway.ai.cloudflare.com/v1/${env.CF_ACCOUNT_ID}/${env.CF_GATEWAY_NAME}/anthropic/v1/messages`;
-
   try {
-    const response = await fetch(gatewayUrl, {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
